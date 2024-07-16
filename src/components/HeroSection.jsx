@@ -38,9 +38,9 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="col-span-5 place-self-center mt-8 sm:place-self-auto sm:flex sm:items-center md:justify-end sm:mt-0">
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[325px] lg:h-[325px] relative">
+          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[350px] lg:h-[350px] relative">
             <Image
-              src="/images/prueba.jpg"
+              src="/images/GUILLE512X512.png"
               alt="hero image"
               width={300}
               height={300}
