@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
 const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [emailSubmitted, setEmailSubmitted] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +24,12 @@ const EmailSection = () => {
       body: JSONdata,
     };
     const response = await fetch(endpoint, options);
+
+    if (response.status === 500) {
+      console.log("Error sending email");
+      setEmailSubmitted(false);
+    }
+
     const resData = await response.json();
     console.log(resData);
 
@@ -108,11 +114,13 @@ const EmailSection = () => {
           >
             Send Message
           </button>
-          {emailSubmitted && (
-            <p className="text-green-500 text-sm mt-2">
-              Email sent successfully!
+          {emailSubmitted === true ? (
+            <p className="text-green-500 mt-2">Email sent successfully!</p>
+          ) : emailSubmitted === false ? (
+            <p className="text-red-500 mt-2">
+              There was an error sending the email, please try again later.
             </p>
-          )}
+          ) : null}
         </form>
       </div>
     </section>
