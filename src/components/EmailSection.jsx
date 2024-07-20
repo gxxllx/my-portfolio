@@ -39,9 +39,21 @@ const EmailSection = () => {
     }
   };
 
+  const emailStyles = emailSubmitted ? "text-green-500" : "text-red-500";
+
+  const message =
+    emailSubmitted === null
+      ? ""
+      : emailSubmitted
+      ? "Email sent successfully!"
+      : "There was an error sending the email, please try again later.";
+
   return (
-    <section className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-2/4 -left-36 transform -translate-x-1/2 -translate-1/2"></div>
+    <section
+      id="contact"
+      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
+    >
+      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-80 right-2/4 md:left-28 transform -translate-x-1/2 -translate-1/2 pointer-events-none"></div>
       <div>
         <h5 className="text-xl font-bold text-white my-2">Let&apos; Connect</h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
@@ -114,13 +126,9 @@ const EmailSection = () => {
           >
             Send Message
           </button>
-          {emailSubmitted === true ? (
-            <p className="text-green-500 mt-2">Email sent successfully!</p>
-          ) : emailSubmitted === false ? (
-            <p className="text-red-500 mt-2">
-              There was an error sending the email, please try again later.
-            </p>
-          ) : null}
+          <div>
+            <p className={`${emailStyles} h-12 mt-3`}>{message}</p>
+          </div>
         </form>
       </div>
     </section>
