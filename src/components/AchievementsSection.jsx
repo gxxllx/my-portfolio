@@ -1,49 +1,47 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
-import { getTotalContributions } from "../app/api/githubApi";
+import { useTotalContributions } from "../utils/useTotalContributions";
 
-const AnimatedNumbers = dynamic(
-  () => {
-    return import("react-animated-numbers");
-  },
-  { ssr: false }
-);
+const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
+  ssr: false,
+});
 
 const AchievementsSection = () => {
-  const [achievementsList, setAchievementsList] = useState([]);
+  const { totalContributions, isLoading, isError } =
+    useTotalContributions("gxxllx");
 
-  useEffect(() => {
-    const fetchAchievements = async () => {
-      try {
-        const totalContributions = await getTotalContributions();
-        const newAchievementsList = [
-          {
-            metric: "Projects",
-            value: "5",
-            postfix: "+",
-          },
-          {
-            metric: "Contributions",
-            value: totalContributions,
-          },
-          {
-            metric: "Years",
-            value: "1",
-          },
-        ];
-        setAchievementsList(newAchievementsList);
-      } catch (error) {
-        console.error("Error fetching achievements:", error.message);
-      }
-    };
-
-    fetchAchievements();
-  }, []);
-
-  if (achievementsList.length === 0) {
-    return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
+        <div className="border-[#33353F] border rounded-md py-16 gap-12 px-10 md:px-16 flex flex-col sm:flex-row md:gap-0 items-center justify-between"></div>
+      </div>
+    );
   }
+
+  if (isError) {
+    return (
+      <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
+        <div className="border-[#33353F] border rounded-md py-16 gap-12 px-10 md:px-16 flex flex-col sm:flex-row md:gap-0 items-center justify-between"></div>
+      </div>
+    );
+  }
+
+  const achievementsList = [
+    {
+      metric: "Projects",
+      value: "5",
+      postfix: "+",
+    },
+    {
+      metric: "Contributions",
+      value: totalContributions,
+    },
+    {
+      metric: "Years",
+      value: "1",
+    },
+  ];
 
   return (
     <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
@@ -55,7 +53,6 @@ const AchievementsSection = () => {
           >
             <h2 className="text-white text-4xl font-bold flex flex-row">
               {achievement.prefix || ""}{" "}
-              {/* Asegúrate de que 'prefix' existe en los datos */}
               <AnimatedNumbers
                 includeComma
                 animateToNumber={parseInt(achievement.value, 10)}
