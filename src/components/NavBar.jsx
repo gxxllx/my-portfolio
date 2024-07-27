@@ -19,9 +19,9 @@ const NavBar = () => {
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
-          className="text-3xl md:text-5xl text-white font-semibold"
+          className="text-3xl md:text-5xl text-white font-black transition duration-500 ease-in-out transform hover:scale-110 hover:text-shadow-custom"
         >
-          Guille
+          Gxxllx
         </Link>
         <div className="block md:hidden">
           {!navOpen ? (

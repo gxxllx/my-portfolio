@@ -19,12 +19,23 @@ const HeroSection = () => {
               Hello,&nbsp;I&apos;m{" "}
             </span>
             <br />
-            <TypeAnimation
-              sequence={["Guille", 1500, "Full Stack Developer", 1500]}
-              wrapper="span"
-              speed={150}
-              repeat={Infinity}
-            />
+            <span className="hidden xl:block">
+              <TypeAnimation
+                sequence={["Guille", 1500, "Full Stack Developer", 1500]}
+                wrapper="span"
+                speed={150}
+                repeat={Infinity}
+              />
+            </span>
+            <span className="block xl:hidden">
+              <TypeAnimation
+                sequence={["Guille", 1500, "Full Stack\nDeveloper", 1500]}
+                wrapper="span"
+                speed={150}
+                repeat={Infinity}
+                style={{ whiteSpace: "pre-line" }}
+              />
+            </span>
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl sm:mt-2">
             I&apos;m a passionate learner and developer. I love to build

@@ -59,13 +59,16 @@ const AboutSection = () => {
 
   return (
     <section id="" className="text-white">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 md:px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image
-          src="/images/prueba-proyecto.png"
-          alt="Proyect 1"
-          width={500}
-          height={500}
-        />
+      <div className="md:grid md:grid-cols-2 gap-8 items-start py-8 md:px-4 xl:gap-16 sm:py-16 xl:px-16">
+        <div className="relative flex items-center justify-center h-auto">
+          <Image
+            src="/images/fotoprueba.avif"
+            alt="Proyect 1"
+            width={500}
+            height={500}
+            className="object-cover"
+          />
+        </div>
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-whitemb-4">About me</h2>
           <p className="text-base lg:text-lg">
@@ -97,7 +100,7 @@ const AboutSection = () => {
               Certifications{" "}
             </TabButton>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 h-36">
             {TAB_DATA.find((t) => t.id === tab).content}
           </div>
         </div>

@@ -63,11 +63,11 @@ const EmailSection = () => {
           say hi, I&apos;ll try my best to answer your email!
         </p>
         <div className="socials flex flex-row gap-2">
-          <Link href="github.com">
-            <FaGithub className="h-9 w-9" />
+          <Link href="https://github.com/gxxllx">
+            <FaGithub className="h-9 w-9 transition duration-250 ease-in-out hover:drop-shadow-custom " />
           </Link>
-          <Link href="linkedin.com">
-            <FaLinkedin className="h-9 w-9" />
+          <Link href="https://www.linkedin.com/in/guillermo-com%C3%ADn-ruiz/">
+            <FaLinkedin className="h-9 w-9 transition duration-250 ease-in-out hover:drop-shadow-custom " />
           </Link>
         </div>
       </div>
