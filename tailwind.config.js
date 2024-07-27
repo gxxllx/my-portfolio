@@ -14,9 +14,16 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      textShadow: {
+        custom: "0 0 30px #9c1aff",
+      },
+      dropShadow: {
+        custom: "0 0 2px #ffffff",
+      },
     },
     screens: {
-      mobile: "520px",
+      fix: "366px",
+      mobile: "420px",
       sm: "640px",
       md: "768px",
       lg: "1024px",
@@ -30,5 +37,16 @@ module.exports = {
       tertiary: colors.blue,
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".text-shadow-custom": {
+          textShadow: "0 0 30px #9c1aff",
+        },
+        ".drop-shadow-custom": {
+          dropShadow: "0 0 5px #ffffff",
+        },
+      });
+    },
+  ],
 };
