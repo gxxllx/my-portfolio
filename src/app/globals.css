@@ -16,6 +16,29 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: purple #121212;
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: purple;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
