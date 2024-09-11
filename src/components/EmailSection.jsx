@@ -15,7 +15,7 @@ const EmailSection = () => {
     };
 
     const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
+    const endpoint = "/api/send/route";
     const options = {
       method: "POST",
       headers: {
@@ -25,8 +25,7 @@ const EmailSection = () => {
     };
     const response = await fetch(endpoint, options);
 
-    if (response.status === 500) {
-      console.log("Error sending email");
+    if (response.status === 500 || response.status === 404) {
       setEmailSubmitted(false);
     }
 
@@ -34,7 +33,6 @@ const EmailSection = () => {
     console.log(resData);
 
     if (resData.status === 200) {
-      console.log("Email sent successfully!");
       setEmailSubmitted(true);
     }
   };
