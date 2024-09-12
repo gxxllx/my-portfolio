@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import ReactDOMServer from "react-dom/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const fromEmail = process.env.FROM_EMAIL;
 
 const sendEmail = async (req, res) => {
   const { email, subject, message } = req.body;
@@ -18,7 +19,7 @@ const sendEmail = async (req, res) => {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "guille@gxxllx.com",
+      from: fromEmail,
       to: ["guillecom04@gmail.com", email],
       subject: subject,
       html: emailHtml,
