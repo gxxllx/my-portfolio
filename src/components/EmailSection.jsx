@@ -29,11 +29,9 @@ const EmailSection = () => {
       setEmailSubmitted(false);
     }
 
-    const resData = await response.json();
-    console.log(resData);
-
-    if (resData.status === 200) {
+    if (response.status === 200) {
       setEmailSubmitted(true);
+      e.target.reset();
     }
   };
 
