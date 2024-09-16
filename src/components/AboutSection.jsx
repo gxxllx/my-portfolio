@@ -15,6 +15,7 @@ const TAB_DATA = [
         <li>React</li>
         <li>Vue.js</li>
         <li>MySQL</li>
+        <li>TailwindCSS</li>
       </ul>
     ),
   },
@@ -62,7 +63,7 @@ const AboutSection = () => {
       <div className="md:grid md:grid-cols-2 gap-8 items-start py-8 md:px-4 xl:gap-16 sm:py-16 xl:px-16">
         <div className="relative flex items-center justify-center h-auto">
           <Image
-            src="/images/fotoprueba.avif"
+            src="/images/PixelArt.png"
             alt="Proyect 1"
             width={500}
             height={500}
@@ -72,10 +73,13 @@ const AboutSection = () => {
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-whitemb-4">About me</h2>
           <p className="text-base lg:text-lg">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore
-            illum tempora fugit illo eius atque, eveniet quia soluta maiores
-            recusandae, unde dolores. Eius tempora consectetur magni vero optio,
-            quas libero?
+            My name is Guillermo and I am a junior full-stack developer.
+            Recently I graduated in a Web Development Professional Formation
+            Degree. Currently, I am studying computer science and I had been
+            working as a Database Analyst the last year. My goal is to become a
+            software engineer and work on projects that can improve my skills
+            and help me grow as a professional. I encourage you to hire me so we
+            can grow together professionally.
           </p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton

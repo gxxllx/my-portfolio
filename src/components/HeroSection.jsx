@@ -62,11 +62,12 @@ const HeroSection = () => {
         >
           <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[350px] lg:h-[350px] relative">
             <Image
-              src="/images/GUILLE512X512.png"
+              src="/images/memoji.png"
               alt="hero image"
               width={300}
               height={300}
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/3 left-1/2"
+              style={{ maskImage: "linear-gradient(black 80%, transparent)" }}
             />
           </div>
         </motion.div>
