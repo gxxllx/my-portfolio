@@ -2,10 +2,12 @@
 import React, { useState, useTransition } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
+import i18n from "@/utils/i18n";
+import { useTranslation } from "react-i18next";
 
 const TAB_DATA = [
   {
-    title: "Skills",
+    title: i18n.t("aboutSkills"),
     id: "skills",
     content: (
       <ul className="list-disc pl-2">
@@ -20,35 +22,37 @@ const TAB_DATA = [
     ),
   },
   {
-    title: "Education",
+    title: i18n.t("aboutEducation"),
     id: "education",
     content: (
       <ul className="list-disc pl-2">
         <li>
-          General Certificate of Education <span>&#40;2020 - 2022&#41;</span>
+          {i18n.t("aboutEducation1")}
+          <span>&#40;2020 - 2022&#41;</span>
         </li>
         <li>
-          Certificate of Higher Education in Web Development{" "}
-          <span>&#40;2022 - 2024&#41;</span>
+          {i18n.t("aboutEducation2")} <span>&#40;2022 - 2024&#41;</span>
         </li>
         <li>
-          Computer Science <span>&#40;2024 - Present&#41;</span>
+          {i18n.t("aboutEducation3")}{" "}
+          <span>&#40;2024 - {i18n.t("aboutEduactionPresent")}&#41;</span>
         </li>
       </ul>
     ),
   },
   {
-    title: "Certifications",
+    title: i18n.t("aboutCertifications"),
     id: "certifications",
     content: (
       <ul className="list-disc pl-2">
-        <li>Python Course</li>
+        <li>{i18n.t("aboutCertifications1")}</li>
       </ul>
     ),
   },
 ];
 
 const AboutSection = () => {
+  const { t } = useTranslation();
   const [tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
 
@@ -71,37 +75,31 @@ const AboutSection = () => {
           />
         </div>
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-bold text-whitemb-4">About me</h2>
-          <p className="text-base lg:text-lg">
-            My name is Guillermo and I am a junior full-stack developer.
-            Recently I graduated in a Web Development Professional Formation
-            Degree. Currently, I am studying computer science and I had been
-            working as a Database Analyst the last year. My goal is to become a
-            software engineer and work on projects that can improve my skills
-            and help me grow as a professional. I encourage you to hire me so we
-            can grow together professionally.
-          </p>
+          <h2 className="text-4xl font-bold text-whitemb-4">
+            {t("aboutTitle")}
+          </h2>
+          <p className="text-base lg:text-lg">{t("aboutText")}</p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
             >
               {" "}
-              Skills{" "}
+              {t("aboutSkills")}{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("education")}
               active={tab === "education"}
             >
               {" "}
-              Education{" "}
+              {t("aboutEducation")}{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("certifications")}
               active={tab === "certifications"}
             >
               {" "}
-              Certifications{" "}
+              {t("aboutCertifications")}{" "}
             </TabButton>
           </div>
           <div className="mt-8 h-36">

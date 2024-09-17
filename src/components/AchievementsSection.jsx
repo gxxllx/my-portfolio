@@ -2,12 +2,15 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { useTotalContributions } from "../utils/useTotalContributions";
+import { useTranslation } from "react-i18next";
 
 const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
   ssr: false,
 });
 
 const AchievementsSection = () => {
+  const { t } = useTranslation();
+
   const { totalContributions, isLoading, isError } =
     useTotalContributions("gxxllx");
 
@@ -29,16 +32,16 @@ const AchievementsSection = () => {
 
   const achievementsList = [
     {
-      metric: "Projects",
+      metric: `${t("achievementProjects")}`,
       value: "5",
       postfix: "+",
     },
     {
-      metric: "Contributions",
+      metric: `${t("achievementContributions")}`,
       value: totalContributions,
     },
     {
-      metric: "Years",
+      metric: `${t("achievementYears")}`,
       value: "1",
     },
   ];

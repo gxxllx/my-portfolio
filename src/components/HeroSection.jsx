@@ -3,8 +3,11 @@ import Image from "next/image";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="lg:py-16">
       <div className="grid grid-cols-1 sm:grid-cols-12 mt-10">
@@ -16,7 +19,7 @@ const HeroSection = () => {
         >
           <h1 className="text-white mb-4 text-5xl sm:text-6xl lg:text-7xl font-extrabold">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-              Hello,&nbsp;I&apos;m{" "}
+              {t("welcomeMessage")}
             </span>
             <br />
             <span className="hidden xl:block">
@@ -38,18 +41,15 @@ const HeroSection = () => {
             </span>
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl sm:mt-2">
-            I&apos;m a passionate learner and developer. I love to build
-            interesting projects and learn new technologies. My goal is to grow
-            professionally contributing the creations of projects so I can keep
-            learning and improving my skills.
+            {t("welcomeAbout")}
           </p>
           <div className="">
             <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-tertiary-500 via-primary-500 to-secondary-500 hover:bg-slate-200 text-white">
-              Hire me
+              {t("welcomeHire")}
             </button>
             <button className="px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-tertiary-500 via-primary-500 to-secondary-500  hover:bg-slate-800 text-white mt-3">
               <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2 ">
-                Download CV
+                {t("welcomeCV")}
               </span>
             </button>
           </div>

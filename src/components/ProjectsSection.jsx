@@ -3,41 +3,52 @@ import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
+import i18n from "@/utils/i18n";
 
 const projectsData = [
   {
     id: 1,
     title: "Mr.Converter",
-    description: "A simple web app to convert units of measurement.",
+    description: i18n.t("projectsMrConverter"),
     image: "images/DonConvertidor.PNG",
-    tag: ["All", "Web"],
+    tag: [`${i18n.t("projectsTag1")}`, `${i18n.t("projectsTag2")}`],
     gitUrl: "/",
     previewUrl: "/",
   },
   {
     id: 2,
-    title: "Eternal Media",
-    description: "A media player for Windows.",
-    image: "images/",
-    tag: ["All", "Desktop"],
+    title: "Portfolio",
+    description: i18n.t("projectsPortfolio"),
+    image: "images/Portfolio.PNG",
+    tag: [`${i18n.t("projectsTag1")}`, `${i18n.t("projectsTag2")}`],
     gitUrl: "/",
     previewUrl: "/",
   },
   {
     id: 3,
-    title: "Coming Soon",
-    description: "More projects are coming soon!",
+    title: "EternalMedia",
+    description: i18n.t("projectsEternalMedia"),
     image: "images/",
-    tag: ["All"],
+    tag: [`${i18n.t("projectsTag1")}`, `${i18n.t("projectsTag2")}`],
+    gitUrl: "/",
+    previewUrl: "/",
+  },
+  {
+    id: 4,
+    title: i18n.t("projectsComingSoon"),
+    description: i18n.t("projectsComingSoonDesc"),
+    image: "images/",
+    tag: [`${i18n.t("projectsTag1")}`],
     gitUrl: "/",
     previewUrl: "/",
   },
 ];
 
 const ProjectsSection = () => {
-  const [tag, setTag] = useState("All");
+  const [tag, setTag] = useState(`${i18n.t("projectsTag1")}`);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  console.log(tag);
 
   const handleTagChange = (newTag) => {
     setTag(newTag);
@@ -55,19 +66,20 @@ const ProjectsSection = () => {
   return (
     <section id="projects">
       <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
+        {i18n.t("projectsTitle")}
       </h2>
       <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
         <ProjectTag
           onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
+          name={i18n.t("projectsTag1")}
+          isSelected={tag === `${i18n.t("projectsTag1")}`}
         />
         <ProjectTag
           onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
+          name={i18n.t("projectsTag2")}
+          isSelected={tag === `${i18n.t("projectsTag2")}`}
         />
+
         {/* <ProjectTag
           onClick={handleTagChange}
           name="Mobile"
