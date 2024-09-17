@@ -4,6 +4,7 @@ import Link from "next/link";
 import NavLink from "./NavLink";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import MenuOverlay from "./MenuOverlay";
+import { useLanguage } from "./LanguageContext"; // Importar el hook del contexto
 import i18n from "@/utils/i18n";
 
 const navLinks = [
@@ -14,11 +15,7 @@ const navLinks = [
 
 const NavBar = () => {
   const [navOpen, setNavOpen] = useState(false);
-  const [language, setLanguage] = useState("es");
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
+  const { language, changeLanguage } = useLanguage(); // Usar el contexto
 
   return (
     <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-95 border-t-transparent border-l-transparent border-r-transparent">
@@ -56,17 +53,17 @@ const NavBar = () => {
             <li>
               {language === "en" ? (
                 <button
-                  onClick={() => setLanguage("es")}
+                  onClick={() => changeLanguage("es")}
                   className="block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white hover:drop-shadow-2xl hover:shadow-slate-100 duration-300"
                 >
-                  ES{changeLanguage(language)}
+                  ES
                 </button>
               ) : (
                 <button
-                  onClick={() => setLanguage("en")}
+                  onClick={() => changeLanguage("en")}
                   className="block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white hover:drop-shadow-2xl hover:shadow-slate-100 duration-300"
                 >
-                  EN{changeLanguage(language)}
+                  EN
                 </button>
               )}
             </li>
