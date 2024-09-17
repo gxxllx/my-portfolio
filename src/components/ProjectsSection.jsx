@@ -1,54 +1,68 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
 import i18n from "@/utils/i18n";
-
-const projectsData = [
-  {
-    id: 1,
-    title: "Mr.Converter",
-    description: i18n.t("projectsMrConverter"),
-    image: "images/DonConvertidor.PNG",
-    tag: [`${i18n.t("projectsTag1")}`, `${i18n.t("projectsTag2")}`],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 2,
-    title: "Portfolio",
-    description: i18n.t("projectsPortfolio"),
-    image: "images/Portfolio.PNG",
-    tag: [`${i18n.t("projectsTag1")}`, `${i18n.t("projectsTag2")}`],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 3,
-    title: "EternalMedia",
-    description: i18n.t("projectsEternalMedia"),
-    image: "images/",
-    tag: [`${i18n.t("projectsTag1")}`, `${i18n.t("projectsTag2")}`],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 4,
-    title: i18n.t("projectsComingSoon"),
-    description: i18n.t("projectsComingSoonDesc"),
-    image: "images/",
-    tag: [`${i18n.t("projectsTag1")}`],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-];
+import { useLanguage } from "./LanguageContext";
 
 const ProjectsSection = () => {
-  const [tag, setTag] = useState(`${i18n.t("projectsTag1")}`);
+  const { language } = useLanguage();
+  const [projectsData, setProjectsData] = useState([]);
+  const [tag, setTag] = useState(i18n.t("projectsTag1"));
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  console.log(tag);
+
+  useEffect(() => {
+    const initialProjectsData = [
+      {
+        id: 1,
+        title: "Mr.Converter",
+        description: "projectsMrConverter",
+        image: "images/DonConvertidor.PNG",
+        tag: ["projectsTag1", "projectsTag2"],
+        gitUrl: "/",
+        previewUrl: "/",
+      },
+      {
+        id: 2,
+        title: "Portfolio",
+        description: "projectsPortfolio",
+        image: "images/Portfolio.PNG",
+        tag: ["projectsTag1", "projectsTag2"],
+        gitUrl: "/",
+        previewUrl: "/",
+      },
+      {
+        id: 3,
+        title: "EternalMedia",
+        description: "projectsEternalMedia",
+        image: "images/EternalMedia.PNG",
+        tag: ["projectsTag1", "projectsTag2"],
+        gitUrl: "/",
+        previewUrl: "/",
+      },
+      {
+        id: 4,
+        title: "projectsComingSoon",
+        description: "projectsComingSoonDesc",
+        image: "images/",
+        tag: ["projectsTag1"],
+        gitUrl: "/",
+        previewUrl: "/",
+      },
+    ];
+
+    const updatedProjects = initialProjectsData.map((project) => ({
+      ...project,
+      description: i18n.t(project.description),
+      title: i18n.t(project.title),
+      tag: project.tag.map((tag) => i18n.t(tag)),
+    }));
+
+    setProjectsData(updatedProjects);
+    setTag(i18n.t("projectsTag1"));
+  }, [language]);
 
   const handleTagChange = (newTag) => {
     setTag(newTag);
@@ -72,19 +86,13 @@ const ProjectsSection = () => {
         <ProjectTag
           onClick={handleTagChange}
           name={i18n.t("projectsTag1")}
-          isSelected={tag === `${i18n.t("projectsTag1")}`}
+          isSelected={tag === i18n.t("projectsTag1")}
         />
         <ProjectTag
           onClick={handleTagChange}
           name={i18n.t("projectsTag2")}
-          isSelected={tag === `${i18n.t("projectsTag2")}`}
+          isSelected={tag === i18n.t("projectsTag2")}
         />
-
-        {/* <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        /> */}
       </div>
       <ul
         ref={ref}
