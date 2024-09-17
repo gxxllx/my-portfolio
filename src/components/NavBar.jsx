@@ -4,7 +4,7 @@ import Link from "next/link";
 import NavLink from "./NavLink";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import MenuOverlay from "./MenuOverlay";
-import { useLanguage } from "./LanguageContext"; // Importar el hook del contexto
+import { useLanguage } from "./LanguageContext";
 import i18n from "@/utils/i18n";
 
 const navLinks = [
@@ -15,7 +15,7 @@ const navLinks = [
 
 const NavBar = () => {
   const [navOpen, setNavOpen] = useState(false);
-  const { language, changeLanguage } = useLanguage(); // Usar el contexto
+  const { language, changeLanguage } = useLanguage();
 
   return (
     <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-95 border-t-transparent border-l-transparent border-r-transparent">
