@@ -2,57 +2,56 @@
 import React, { useState, useTransition } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
-import i18n from "@/utils/i18n";
 import { useTranslation } from "react-i18next";
-
-const TAB_DATA = [
-  {
-    title: i18n.t("aboutSkills"),
-    id: "skills",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Node.js</li>
-        <li>Express</li>
-        <li>Django</li>
-        <li>React</li>
-        <li>Vue.js</li>
-        <li>MySQL</li>
-        <li>TailwindCSS</li>
-      </ul>
-    ),
-  },
-  {
-    title: i18n.t("aboutEducation"),
-    id: "education",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>
-          {i18n.t("aboutEducation1")}
-          <span>&#40;2020 - 2022&#41;</span>
-        </li>
-        <li>
-          {i18n.t("aboutEducation2")} <span>&#40;2022 - 2024&#41;</span>
-        </li>
-        <li>
-          {i18n.t("aboutEducation3")}{" "}
-          <span>&#40;2024 - {i18n.t("aboutEduactionPresent")}&#41;</span>
-        </li>
-      </ul>
-    ),
-  },
-  {
-    title: i18n.t("aboutCertifications"),
-    id: "certifications",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>{i18n.t("aboutCertifications1")}</li>
-      </ul>
-    ),
-  },
-];
 
 const AboutSection = () => {
   const { t } = useTranslation();
+
+  const TAB_DATA = [
+    {
+      title: t("aboutSkills"),
+      id: "skills",
+      content: (
+        <ul className="list-disc pl-2">
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>Django</li>
+          <li>React</li>
+          <li>Vue.js</li>
+          <li>MySQL</li>
+          <li>TailwindCSS</li>
+        </ul>
+      ),
+    },
+    {
+      title: t("aboutEducation"),
+      id: "education",
+      content: (
+        <ul className="list-disc pl-2">
+          <li>
+            {t("aboutEducation1")} <span>&#40;2020 - 2022&#41;</span>
+          </li>
+          <li>
+            {t("aboutEducation2")} <span>&#40;2022 - 2024&#41;</span>
+          </li>
+          <li>
+            {t("aboutEducation3")}{" "}
+            <span>&#40;2024 - {t("aboutEduactionPresent")}&#41;</span>
+          </li>
+        </ul>
+      ),
+    },
+    {
+      title: t("aboutCertifications"),
+      id: "certifications",
+      content: (
+        <ul className="list-disc pl-2">
+          <li>{t("aboutCertifications1")}</li>
+        </ul>
+      ),
+    },
+  ];
+
   const [tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
 
